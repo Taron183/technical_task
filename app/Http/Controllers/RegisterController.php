@@ -38,7 +38,7 @@ class RegisterController extends Controller
             Mail::to($user->email)->send($email);
         }
 
-        Session::flash('success_message', 'Rigstration user successfully!');
+        Session::flash('success_message', 'Thank you for creating Armface account, please verify your account!');
         return redirect()->back();
 
     }

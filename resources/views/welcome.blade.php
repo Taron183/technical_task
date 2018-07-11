@@ -67,8 +67,12 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <a href="{{route('login')}}">Login</a>
-                <a href="{{route('register.show')}}">Register</a>
+                @auth
+                    <a href="{{ route('profile') }}">Home</a>
+                @else
+                    <a href="{{route('login')}}">Login</a>
+                    <a href="{{route('register.show')}}">Register</a>
+                @endauth
             </div>
         </div>
     </body>

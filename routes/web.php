@@ -15,14 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::prefix('register')->group(function () {
-    Route::get('/', 'RegisterController@showRegistrationForm')->name('register.show');
-    Route::post('/', 'RegisterController@register')->name('register');
-});
+// Register Routes...
+Route::get('/register', 'RegisterController@showRegistrationForm')->name('register.show');
+Route::post('/register', 'RegisterController@register')->name('register');
 
-Route::prefix('login')->group(function () {
-    Route::get('/', 'LoginController@showLoginForm')->name('login.show');
-    Route::post('/', 'LoginController@login')->name('login');
-});
-
+// Registration verify email...
 Route::get('/verifyemail/{token}', 'VerificationController@verify');
+
+// Authentication Routes...
+Route::get('/login', 'LoginController@showLoginForm')->name('login.show');
+Route::post('/login', 'LoginController@login')->name('login');
+Route::post('/logout', 'LoginController@logout')->name('logout');
+
+
+
+Route::middleware('UserAuth')->group(function () {
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::get('/change', 'ProfileController@changePasswordshow')->name('change.password.show');
+    Route::post('/avatar-photo', 'ProfileController@avatarPhoto')->name('avatar.photo');
+
+
+});
+
+
+
+
+
