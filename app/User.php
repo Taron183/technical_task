@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'email_token', 'password'
     ];
 
     /**
@@ -26,4 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
+    }
+
+    public static function getAlluserImages()
+    {
+        return DB::select('SELECT * 
+                            FROM users  
+                            LEFT  JOIN  posts ON  users.id = posts.user_id');
+    }
 }

@@ -13,4 +13,16 @@
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::prefix('register')->group(function () {
+    Route::get('/', 'RegisterController@showRegistrationForm')->name('register.show');
+    Route::post('/', 'RegisterController@register')->name('register');
 });
+
+Route::prefix('login')->group(function () {
+    Route::get('/', 'LoginController@showLoginForm')->name('login.show');
+    Route::post('/', 'LoginController@login')->name('login');
+});
+
+Route::get('/verifyemail/{token}', 'VerificationController@verify');
