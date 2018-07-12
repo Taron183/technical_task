@@ -32,10 +32,4 @@ class User extends Authenticatable
         return $this->hasMany('App\Image');
     }
 
-    public static function getAlluserImages()
-    {
-        return DB::select('SELECT * 
-                            FROM users  
-                            LEFT  JOIN  posts ON  users.id = posts.user_id');
-    }
 }

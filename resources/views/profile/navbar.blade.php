@@ -16,7 +16,7 @@
                        aria-expanded="false">Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <a href="{{route('change.password.show')}}" class="dropdown-item">Change password</a>
-                        <a class="dropdown-item">Add photos</a>
+                        <a href="{{route('photos.form.show')}}" class="dropdown-item">Add photos</a>
                     </div>
                 </li>
             </ul>

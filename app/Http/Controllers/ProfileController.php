@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -65,6 +66,34 @@ class ProfileController extends Controller
             ];
         }
         $item->fill($data_img)->save();
+        return redirect()->back();
+    }
+
+    public function photosShow()
+    {
+        $id = Auth::id();
+        $items = User::findOrFail($id);
+        $items->load('images');
+        return view('profile.photos_form', compact('items'));
+    }
+
+    public function addPhotos(Request $request)
+    {
+        $data = $request->all();
+        $this->validate($request, [
+            "image" => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
+        ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            Storage::disk('public')->putFile('photos', $image);
+            $data['image'] = $image->hashName();
+        }
+
+        $image = new Image();
+        $image->user_id = Auth::id();
+        $image->image = $data['image'];
+        $image->save();
+        Session::flash('success_message', 'Your photo added');
         return redirect()->back();
     }
 }
