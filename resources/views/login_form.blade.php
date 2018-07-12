@@ -27,7 +27,11 @@
                             <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
                         @endif
                     </div>
-
+                    <div class="form-group" style="text-align: center">
+                        <a class="" href="{{route('reset.show')}}">
+                            Forgot Your Password?
+                        </a>
+                    </div>
                     <div class="form-group" style="text-align: left">
                         <a href="{{route('welcome')}}"  class="btn btn-default">Back to home</a>
                     </div>

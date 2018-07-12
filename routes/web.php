@@ -28,6 +28,11 @@ Route::post('/login', 'LoginController@login')->name('login');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 
 
+// Forgot Password...
+Route::get('/reset', 'PasswordResetController@showResetForm')->name('reset.show');
+Route::post('/reset/request', 'PasswordResetController@reset')->name('reset');
+Route::get('/reset-link/{token}', 'PasswordResetController@changePasswordForm');
+Route::post('/reset-password', 'PasswordResetController@updatePassword')->name('update.password');
 
 Route::middleware('UserAuth')->group(function () {
     Route::get('/profile', 'ProfileController@index')->name('profile');
