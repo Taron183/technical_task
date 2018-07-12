@@ -39,7 +39,6 @@ Route::middleware('UserAuth')->group(function () {
     Route::get('/change', 'ProfileController@changePasswordshow')->name('change.password.show');
     Route::post('/avatar-photo', 'ProfileController@avatarPhoto')->name('avatar.photo');
 
-
 });
 
 

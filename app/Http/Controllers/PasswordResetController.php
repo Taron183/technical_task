@@ -22,23 +22,38 @@ class PasswordResetController extends Controller
             'email' => 'required|string|email|max:255',
         ]);
 
-        $passwordResets = DB::table('password_resets')->insert([
-            'token' => $request['_token'],
-            'email' => $request['email'],
-        ]);
+       $user =  User::where('email', $request['email'])->first();
+       if (isset($user->email)) {
+           $passwordResets = DB::table('password_resets')->insert([
+               'token' => $request['_token'],
+               'email' => $request['email'],
+           ]);
 
-        if($passwordResets){
-            $email = new SendResetLinkEmail($request['_token']);
-            Mail::to($request['email'])->send($email);
-        }
+           if($passwordResets){
+               $email = new SendResetLinkEmail($request['_token']);
+               Mail::to($request['email'])->send($email);
+           }
 
-        Session::flash('success_message', 'Your email sent password reset links');
-        return redirect()->back();
+           Session::flash('success_message', 'Your email sent password reset links');
+
+       } else {
+           Session::flash('error_message', 'This user does not exist');
+       }
+
+       return redirect()->back();
     }
 
     public function changePasswordForm($token)
     {
-        return view('pasword_update_form',compact('token'));
+        $password_reset =DB::table('password_resets')->where('token', $token)->first();
+
+        if ($password_reset) {
+            return view('pasword_update_form',compact('token'));
+        } else {
+            return 'Page Not Found';
+        }
+
+
     }
 
     public function updatePassword(Request $request)
@@ -58,9 +73,9 @@ class PasswordResetController extends Controller
         ];
 
         $item->fill($dataPassword)->save();
-        DB::table('password_resets')->where('token', $date['token'])->update(['token' => '']);
+        DB::table('password_resets')->where('token', $date['token'])->delete();
         Session::flash('success_message', 'Your password reset');
-       return redirect()->back();
+        return redirect('/login');
 
    }
 }
