@@ -6,7 +6,7 @@
        <div class="row m-b-r m-t-3">
            <div class="col-md-2 offset-md-1">
                @if(Auth::user()->image == null)
-                    <img src="https://mdbootstrap.com/images/avatars/img%20(1).jpg" alt="" class="img-circle img-fluid">
+                    <img src="{{asset('images/default.jpg')}}" alt="" class="img-circle img-fluid">
                @else
                    <img src="{{asset(Storage::url('avatar/'.Auth::user()->image))}}" alt="" class="img-circle img-fluid">
                @endif
@@ -19,7 +19,7 @@
                             </span>
                         @endif
                     </div>
-                   <div class="form-group" style="text-align: right">
+                   <div class="form-group">
                        <button type="submit" class="btn btn-primary">Edit photo</button>
                    </div>
                {!! Form::close() !!}
@@ -29,8 +29,6 @@
                <p>{{Auth::user()->last_name}}</p>
                <ul class="flex-menu">
                    <li><strong>41</strong> Photos</li>
-                   <li><strong>47k</strong> followers</li>
-                   <li><strong>208</strong> following</li>
                </ul>
            </div>
        </div>
@@ -42,7 +40,7 @@
                <th>Lastname</th>
                <th>Email</th>
                <th>Image</th>
-               <th>verified</th>
+               <th>Verified</th>
            </tr>
            </thead>
            <tbody>
@@ -51,8 +49,14 @@
                        <td>{{$user->first_name}}</td>
                        <td>{{$user->last_name}}</td>
                        <td>{{$user->email}}</td>
-                       <td></td>
-                       <td></td>
+                       <td>
+                           @if($user->image)
+                                <img src="{{asset(Storage::url('avatar/'.$user->image))}}" alt="" class="img-circle img-fluid" id="img-par">
+                            @else
+                               <img src="{{asset('images/default.jpg')}}" alt="" class="img-circle img-fluid" id="img-par">
+                            @endif
+                       </td>
+                       <td>{!! $user->verified == 1 ? '<i class="fa  fa-check-circle-o"></i>' : '<i class="fa  fa-circle"></i>' !!}</td>
                    </tr>
                @endforeach
            </tbody>
@@ -60,9 +64,4 @@
    </div>
 </main>
 @endsection
-
-@section('script')
-    <script src="{{ asset('js/image_change.js')}}"></script>
-@endsection
-
 

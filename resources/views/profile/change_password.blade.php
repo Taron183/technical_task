@@ -1,11 +1,4 @@
 @extends('layouts.default')
-@section('style')
-    <style>
-        .help-block{
-            color: red;
-        }
-    </style>
-@endsection
 @section('content')
     @include('profile.navbar')
     @include('partials.messages')

@@ -15,7 +15,7 @@
                     <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <a  href="{{route('change.password.show')}}" class="dropdown-item">Change password</a>
-                        <a class="dropdown-item">Add avatar photo</a>
+                        <a class="dropdown-item">Add  photos</a>
                     </div>
                 </li>
             </ul>

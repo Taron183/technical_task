@@ -1,4 +1,4 @@
-.navbar-brand {
+navbar-brand {
 	color:#fff !important;
 }
 
@@ -13,4 +13,17 @@
 
 .flex-menu li:not(:last-child) {
 	margin-right:40px;
+}
+
+.card img, .img-fluid, .section .view, .section img {
+	height: 150px!important;
+}
+
+#img-par{
+	width: 60px !important;
+	height: 50px !important;
+}
+
+.help-block{
+	color: red;
 }

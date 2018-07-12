@@ -1,11 +1,4 @@
 @extends('layouts.default')
-@section('style')
-    <style>
-        .help-block{
-            color: red;
-        }
-    </style>
-@endsection
 @section('content')
     <div class="container">
         <div class="panel panel-default">
