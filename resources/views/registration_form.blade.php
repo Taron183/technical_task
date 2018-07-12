@@ -1,20 +1,14 @@
 @extends('layouts.default')
-@section('style')
-    <style>
-        .help-block{
-            color: red;
-        }
-    </style>
-@endsection
 @section('content')
     @include('partials.messages')
     <div class="container">
-        <h2>Registration   user</h2>
-        <form action="{{route('register')}}" method="post" >
+        <h2>Registration user</h2>
+        <form action="{{route('register')}}" method="post">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="first_name">First name:</label>
-                <input type="text" class="form-control" id="first_name" placeholder="Enter first name" name="first_name">
+                <input type="text" class="form-control" id="first_name" placeholder="Enter first name"
+                       name="first_name">
                 @if ($errors->has('first_name'))
                     <span class="help-block"><strong>{{ $errors->first('first_name') }}</strong></span>
                 @endif
@@ -42,17 +36,18 @@
             </div>
             <div class="form-group">
                 <label for="confirm_password">Confirm Password:</label>
-                <input type="password" class="form-control" id="confirm_password" placeholder="Enter confirm password" name="confirm_password">
+                <input type="password" class="form-control" id="confirm_password" placeholder="Enter confirm password"
+                       name="confirm_password">
                 @if ($errors->has('confirm_password'))
                     <span class="help-block"><strong>{{ $errors->first('confirm_password') }}</strong></span>
                 @endif
             </div>
             <div class="form-group" style="text-align: left">
-                <a href="{{route('welcome')}}"  class="btn btn-default">Back to home</a>
-            <div class="form-group">
+                <a href="{{route('welcome')}}" class="btn btn-default">Back to home</a>
+            </div>
             <div class="form-group" style="text-align: right">
                 <button type="submit" class="btn btn-success">REGISTER</button>
-            <div class="form-group">
+            </div>
         </form>
     </div>
 @endsection

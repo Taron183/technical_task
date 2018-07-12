@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
 use DB;
@@ -16,39 +17,39 @@ class PasswordResetController extends Controller
         return view('reset_form');
     }
 
-    public  function  reset(Request $request)
+    public function reset(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|string|email|max:255',
         ]);
 
-       $user =  User::where('email', $request['email'])->first();
-       if (isset($user->email)) {
-           $passwordResets = DB::table('password_resets')->insert([
-               'token' => $request['_token'],
-               'email' => $request['email'],
-           ]);
+        $user = User::where('email', $request['email'])->first();
+        if (isset($user->email)) {
+            $passwordResets = DB::table('password_resets')->insert([
+                'token' => $request['_token'],
+                'email' => $request['email'],
+            ]);
 
-           if($passwordResets){
-               $email = new SendResetLinkEmail($request['_token']);
-               Mail::to($request['email'])->send($email);
-           }
+            if ($passwordResets) {
+                $email = new SendResetLinkEmail($request['_token']);
+                Mail::to($request['email'])->send($email);
+            }
 
-           Session::flash('success_message', 'Your email sent password reset links');
+            Session::flash('success_message', 'Your email sent password reset links');
 
-       } else {
-           Session::flash('error_message', 'This user does not exist');
-       }
+        } else {
+            Session::flash('error_message', 'This user does not exist');
+        }
 
-       return redirect()->back();
+        return redirect()->back();
     }
 
     public function changePasswordForm($token)
     {
-        $password_reset =DB::table('password_resets')->where('token', $token)->first();
+        $password_reset = DB::table('password_resets')->where('token', $token)->first();
 
         if ($password_reset) {
-            return view('pasword_update_form',compact('token'));
+            return view('pasword_update_form', compact('token'));
         } else {
             return 'Page Not Found';
         }
@@ -77,5 +78,5 @@ class PasswordResetController extends Controller
         Session::flash('success_message', 'Your password reset');
         return redirect('/login');
 
-   }
+    }
 }

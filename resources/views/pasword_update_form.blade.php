@@ -22,13 +22,13 @@
                     @endif
                 </div>
                 <div class="form-group" style="text-align: left">
-                    <a href="{{route('welcome')}}"  class="btn btn-default">Back to home</a>
+                    <a href="{{route('welcome')}}" class="btn btn-default">Back to home</a>
                     <div>
-                <div class="form-group" style="text-align: right">
-                    <button type="submit" class="btn btn-primary">Reset</button>
+                        <div class="form-group" style="text-align: right">
+                            <button type="submit" class="btn btn-primary">Reset</button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
                 </div>
-                {!! Form::close() !!}
             </div>
-        </div>
-    </div>
 @endsection

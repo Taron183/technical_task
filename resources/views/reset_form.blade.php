@@ -11,7 +11,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" name="email"  required="required" class="form-control">
+                                <input id="email" type="email" name="email" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
@@ -22,8 +22,8 @@
                             </div>
                         </div>
                         <div class="form-group" style="text-align: left">
-                            <a href="{{route('welcome')}}"  class="btn btn-default">Back to home</a>
-                        <div>
+                            <a href="{{route('welcome')}}" class="btn btn-default">Back to home</a>
+                        </div>
                     </form>
                 </div>
             </div>

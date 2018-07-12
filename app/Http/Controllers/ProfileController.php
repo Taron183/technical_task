@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -18,13 +19,13 @@ class ProfileController extends Controller
     }
 
 
-    public  function changePasswordshow(Request $request)
+    public function changePasswordshow(Request $request)
     {
         return view('profile.change_password');
     }
 
 
-    public function  changePassword(Request $request)
+    public function changePassword(Request $request)
     {
         $this->validate($request, [
             'password' => 'required|min:6',
@@ -43,7 +44,7 @@ class ProfileController extends Controller
     }
 
 
-    public  function  avatarPhoto(Request $request)
+    public function avatarPhoto(Request $request)
     {
         $data = $request->all();
         $this->validate($request, [
@@ -52,8 +53,8 @@ class ProfileController extends Controller
         if ($request->hasFile('image')) {
             $id = Auth::id();
             $item = User::findOrFail($id);
-            if($item->image){
-                 Storage::disk('public')->delete('avatar/'.$item->image);
+            if ($item->image) {
+                Storage::disk('public')->delete('avatar/' . $item->image);
             }
             $image = $request->file('image');
             Storage::disk('public')->putFile('avatar', $image);

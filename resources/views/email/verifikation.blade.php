@@ -1,12 +1,12 @@
 @component('mail::message')
-Hello {{$user->first_name}}
+    Hello {{$user->first_name}}
 
-Congratulations  {{$user->first_name}}! You have successfully registered for, to continue your verification account.
+    Congratulations  {{$user->first_name}}! You have successfully registered for, to continue your verification account.
 
-@component('mail::button', ['url' =>url('/verifyemail/'.$user->email_token)])
-    Verify
-@endcomponent
+    @component('mail::button', ['url' =>url('/verifyemail/'.$user->email_token)])
+        Verify
+    @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+    Thanks,<br>
+    {{ config('app.name') }}
 @endcomponent

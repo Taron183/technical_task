@@ -12,16 +12,18 @@
             <!--Links-->
             <ul class="nav navbar-nav">
                 <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a  href="{{route('change.password.show')}}" class="dropdown-item">Change password</a>
-                        <a class="dropdown-item">Add  photos</a>
+                        <a href="{{route('change.password.show')}}" class="dropdown-item">Change password</a>
+                        <a class="dropdown-item">Add photos</a>
                     </div>
                 </li>
             </ul>
             <ul class="nav navbar-nav nav-flex-icons">
                 <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <a href="#" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" class="dropdown-item ">Log out</a>

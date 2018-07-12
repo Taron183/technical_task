@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -33,7 +34,7 @@ class RegisterController extends Controller
             'email_token' => base64_encode($request['email']),
         ]);
 
-        if($user){
+        if ($user) {
             $email = new SendVerificationEmail($user);
             Mail::to($user->email)->send($email);
         }

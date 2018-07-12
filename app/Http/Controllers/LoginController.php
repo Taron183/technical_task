@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Auth;
 
 class LoginController extends Controller
 {
-    public  function showLoginForm()
+    public function showLoginForm()
     {
         return view('login_form');
     }
 
-    public  function login(Request $request)
+    public function login(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|string|email|max:255',

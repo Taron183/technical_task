@@ -1,29 +1,29 @@
 navbar-brand {
-	color:#fff !important;
+    color: #fff !important;
 }
 
 .profile-photo {
-	width:48px;
-	height:auto;
+    width: 48px;
+    height: auto;
 }
 
 .flex-menu {
-	display:flex;
+    display: flex;
 }
 
 .flex-menu li:not(:last-child) {
-	margin-right:40px;
+    margin-right: 40px;
 }
 
 .card img, .img-fluid, .section .view, .section img {
-	height: 150px!important;
+    height: 150px !important;
 }
 
-#img-par{
-	width: 60px !important;
-	height: 50px !important;
+#img-par {
+    width: 60px !important;
+    height: 50px !important;
 }
 
-.help-block{
-	color: red;
+.help-block {
+    color: red;
 }
