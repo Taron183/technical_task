@@ -28,9 +28,6 @@
                 <div class="col-md-9 p-t-2">
                     <h2 class="h2-responsive">{{Auth::user()->first_name}}</h2>
                     <p>{{Auth::user()->last_name}}</p>
-                    <ul class="flex-menu">
-                        <li><strong>41</strong> Photos</li>
-                    </ul>
                 </div>
             </div>
             <h2 style="text-align: center">All Users</center></h2>

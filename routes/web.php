@@ -37,6 +37,7 @@ Route::post('/reset-password', 'PasswordResetController@updatePassword')->name('
 Route::middleware('UserAuth')->group(function () {
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::get('/change', 'ProfileController@changePasswordshow')->name('change.password.show');
+    Route::post('/change-password', 'ProfileController@changePassword')->name('change.password');
     Route::post('/avatar-photo', 'ProfileController@avatarPhoto')->name('avatar.photo');
     Route::get('/add-photos', 'ProfileController@photosShow')->name('photos.form.show');
     Route::post('/photos', 'ProfileController@addPhotos')->name('add.photos');
